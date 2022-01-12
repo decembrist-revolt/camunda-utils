@@ -1,4 +1,4 @@
-await fetch("https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.js")
+fetch("https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.js")
     .then(response => response.text())
     .then(text => eval(text))
 
