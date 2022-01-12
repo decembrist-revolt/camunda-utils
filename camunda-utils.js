@@ -1,7 +1,3 @@
-fetch("https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.js")
-    .then(response => response.text())
-    .then(text => eval(text))
-
 const command = prompt(`Sorry? 
  1: Deploy 
  2: Select and act
@@ -60,13 +56,14 @@ async function handleDefinitions() {
 }
 
 async function selectDefinitions() {
-    const config = {
-        method: 'get',
-        url: `http://${window.location.host}/rest/process-definition`,
-        headers: {}
+    const requestOptions = {
+        method: 'GET',
+        headers: new Headers(),
+        redirect: 'follow'
     };
 
-    return await axios(config).then(response => response.data)
+    return await fetch(`http://${window.location.host}/rest/process-definition`, requestOptions)
+        .then(response => response.json())
 }
 
 async function handleJobs() {
@@ -80,7 +77,9 @@ async function handleJobs() {
     }
     switch (selectBy) {
         case "1":
-            query.processDefinitionId = prompt("processDefinitionId")
+            const processDefinitionIdDiv = document.querySelector(".definition-id")
+            const processDefinitionId = processDefinitionIdDiv ? processDefinitionIdDiv.innerText : ""
+            query.processDefinitionId = prompt(`processDefinitionId ${processDefinitionId}`)
             break;
         case "2":
             query.processDefinitionKey = prompt("processDefinitionKey")
@@ -113,16 +112,15 @@ async function handleJobs() {
 async function retry(jobs) {
     for (let job of jobs) {
         console.log("Try to retry " + job.id)
-        const config = {
-            method: 'put',
-            url: `http://${window.location.host}/rest/job/${job.id}/retries`,
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            data: JSON.stringify({retries: 1})
+        const headers = new Headers();
+        headers.append("Content-Type", "application/json");
+        const requestOptions = {
+            method: 'PUT',
+            headers: headers,
+            body: JSON.stringify({retries: 1})
         };
 
-        await axios(config).then(response => response.data)
+        await fetch(`http://${window.location.host}/rest/job/${job.id}/retries`, requestOptions)
         console.log("Job retry+ " + job.id)
     }
 }
@@ -132,13 +130,13 @@ async function selectJobs(query) {
     for (let el in query) {
         queryString += `${el}=${query[el]}&`
     }
-    const config = {
+    const requestOptions = {
         method: 'get',
-        url: `http://${window.location.host}/rest/job?${queryString}`,
-        headers: {}
+        headers: new Headers()
     };
 
-    return await axios(config).then(response => response.data)
+    return await fetch(`http://${window.location.host}/rest/job?${queryString}`, requestOptions)
+        .then(response => response.json())
 }
 
 function show(data) {
