@@ -1,0 +1,169 @@
+<!--HTML for dev purposes-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Empty project</title>
+    <meta charset="utf-8">
+</head>
+<body>
+<dl class="process-information ng-scope">
+    <dt class="ng-binding">Definition Version:</dt>
+    <dd class="definition-version">
+        <!-- ngIf: !instanceStatistics.$loaded -->
+
+        <!-- ngIf: instanceStatistics.$loaded && allDefinitions.length > 1 -->
+        <div class="dropdown ng-scope" ng-if="instanceStatistics.$loaded &amp;&amp; allDefinitions.length > 1"
+             uib-dropdown="">
+            <span>
+              <span change-version="processDefinition" type="process" class="ng-isolate-scope"><!-- ngIf: isActive -->
+                  <!-- ngIf: !isActive --><button ng-if="!isActive" ng-click="open()"
+                                                  class="btn btn-xs btn-default ng-scope">
+  <span class="ng-binding">2</span>
+</button><!-- end ngIf: !isActive -->
+</span>
+
+              <a href="" uib-dropdown-toggle="" class="dropdown-toggle btn btn-xs btn-default" aria-haspopup="true"
+                 aria-expanded="false">
+                <span class="caret"></span>
+              </a>
+            </span>
+
+            <ul uib-dropdown-menu="" class="dropdown-menu">
+                <!-- ngRepeat: definition in allDefinitions -->
+                <li ng-repeat="definition in allDefinitions" class="ng-scope">
+                    <a ng-href="#/process-definition/prototypeUnpickingTask:2:bede1d76-98db-11ec-b273-ca2e1a8950b9"
+                       class="ng-binding"
+                       href="#/process-definition/prototypeUnpickingTask:2:bede1d76-98db-11ec-b273-ca2e1a8950b9">
+                        2
+                    </a>
+                </li><!-- end ngRepeat: definition in allDefinitions -->
+                <li ng-repeat="definition in allDefinitions" class="ng-scope">
+                    <a ng-href="#/process-definition/prototypeUnpickingTask:1:b5df5809-ee41-11eb-a455-be905a3f25f7"
+                       class="ng-binding"
+                       href="#/process-definition/prototypeUnpickingTask:1:b5df5809-ee41-11eb-a455-be905a3f25f7">
+                        1
+                    </a>
+                </li><!-- end ngRepeat: definition in allDefinitions -->
+            </ul>
+        </div><!-- end ngIf: instanceStatistics.$loaded && allDefinitions.length > 1 -->
+
+        <!-- ngIf: instanceStatistics.$loaded && allDefinitions.length < 2 -->
+    </dd>
+
+    <dt class="ng-binding">Version Tag:</dt>
+    <!-- ngIf: processDefinition.versionTag -->
+    <!-- ngIf: !processDefinition.versionTag -->
+    <dd class="version-tag ng-scope" ng-if="!processDefinition.versionTag"><span
+            class="null-value ng-binding">null</span></dd><!-- end ngIf: !processDefinition.versionTag -->
+
+    <dt cam-widget-clipboard="processDefinition.id" cam-hoverable-title="definition-id" class="ng-isolate-scope"><span
+            ng-transclude="" class="">Definition ID:</span>
+        <!-- ngIf: !noTooltip --><a ng-if="!noTooltip"
+                                    uib-tooltip="Click to copy 'prototypeUnpickingTask:2:bede1d76-98db-11ec-b273-ca2e1a8950b9'"
+                                    tooltip-append-to-body="true"
+                                    ng-class="{'copy-ok': copyStatus === true, 'copy-error': copyStatus === false}"
+                                    class="glyphicon glyphicon-copy"></a><!-- end ngIf: !noTooltip -->
+        <!-- ngIf: noTooltip -->
+    </dt>
+    <dd class="definition-id ng-binding" cam-hover-trigger="definition-id">
+        prototypeUnpickingTask:2:bede1d76-98db-11ec-b273-ca2e1a8950b9
+    </dd>
+
+    <dt cam-widget-clipboard="processDefinition.key" cam-hoverable-title="definition-key" class="ng-isolate-scope"><span
+            ng-transclude="" class="">Definition Key:</span>
+        <!-- ngIf: !noTooltip --><a ng-if="!noTooltip" uib-tooltip="Click to copy 'prototypeUnpickingTask'"
+                                    tooltip-append-to-body="true"
+                                    ng-class="{'copy-ok': copyStatus === true, 'copy-error': copyStatus === false}"
+                                    class="glyphicon glyphicon-copy"></a><!-- end ngIf: !noTooltip -->
+        <!-- ngIf: noTooltip -->
+    </dt>
+    <dd class="definition-key ng-binding" cam-hover-trigger="definition-key">prototypeUnpickingTask</dd>
+
+    <dt class="ng-binding">Definition Name:</dt>
+    <!-- ngIf: processDefinition.name -->
+    <dd class="definition-name ng-binding ng-scope" ng-if="processDefinition.name">Prototype an unpicking task</dd>
+    <!-- end ngIf: processDefinition.name -->
+    <!-- ngIf: !processDefinition.name -->
+
+    <dt cam-widget-clipboard="processDefinition.historyTimeToLive" cam-hoverable-title="history-time-to-live"
+        class="ng-isolate-scope"><span ng-transclude="" class="">
+            History Time To Live:
+        </span>
+        <!-- ngIf: !noTooltip --><a ng-if="!noTooltip" uib-tooltip="Click to copy ''" tooltip-append-to-body="true"
+                                    ng-class="{'copy-ok': copyStatus === true, 'copy-error': copyStatus === false}"
+                                    class="glyphicon glyphicon-copy"></a><!-- end ngIf: !noTooltip -->
+        <!-- ngIf: noTooltip -->
+    </dt>
+    <dd class="history-time-to-live" cam-hover-trigger="history-time-to-live">
+          <span time-to-live="processDefinition" resource="process-definition" class="ng-isolate-scope"><span
+                  cam-inline-panel-property="definition.historyTimeToLive" format="format(property)" type="number"
+                  on-change="onChange()" on-remove="onRemove()" class="ng-isolate-scope"><span
+                  cam-widget-inline-field="" class="set-value ng-isolate-scope" type="number" change="onChange()"
+                  value="property"><span ng-show="!editing" ng-click="startEditing()" ng-transclude=""
+                                         class="view-value">
+  <span ng-show="property == null" class="null-value ng-binding ng-scope">null</span>
+  <span ng-show="property != null" class="ng-binding ng-scope ng-hide">
+     days
+    <button type="button" class="btn btn-link btn-xs" ng-click="remove($event)">
+      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+    </button>
+  </span>
+</span>
+
+              <!-- ngIf: editing && (varType === 'datetime' || varType === 'date' || varType === 'time') -->
+
+              <!-- ngIf: editing -->
+</span>
+</span>
+</span>
+    </dd>
+
+    <!-- ngIf: processDefinition.tenantId -->
+    <!-- ngIf: processDefinition.tenantId -->
+    <!-- ngIf: !processDefinition.tenantId -->
+    <dt ng-if="!processDefinition.tenantId" class="ng-binding ng-scope">Tenant ID:</dt>
+    <!-- end ngIf: !processDefinition.tenantId -->
+    <!-- ngIf: !processDefinition.tenantId -->
+    <dd class="tenant-id ng-scope" ng-if="!processDefinition.tenantId"><span class="null-value ng-binding">null</span>
+    </dd><!-- end ngIf: !processDefinition.tenantId -->
+
+    <dt cam-widget-clipboard="processDefinition.deploymentId" cam-hoverable-title="deployment-id"
+        class="ng-isolate-scope"><span ng-transclude="" class="">Deployment ID:</span>
+        <!-- ngIf: !noTooltip --><a ng-if="!noTooltip"
+                                    uib-tooltip="Click to copy 'bec453e4-98db-11ec-b273-ca2e1a8950b9'"
+                                    tooltip-append-to-body="true"
+                                    ng-class="{'copy-ok': copyStatus === true, 'copy-error': copyStatus === false}"
+                                    class="glyphicon glyphicon-copy"></a><!-- end ngIf: !noTooltip -->
+        <!-- ngIf: noTooltip -->
+    </dt>
+    <dd class="deployment-id" cam-hover-trigger="deployment-id">
+        <a ng-href="#/repository?deployment=bec453e4-98db-11ec-b273-ca2e1a8950b9&amp;resourceName=%2Fapplication%2FBOOT-INF%2Fclasses%2Fbpmn%2FprototypeUnpickingTask.bpmn&amp;deploymentsQuery=%5B%7B%22type%22%3A%22id%22%2C%22operator%22%3A%22eq%22%2C%22value%22%3A%22bec453e4-98db-11ec-b273-ca2e1a8950b9%22%7D%5D"
+           class="ng-binding"
+           href="#/repository?deployment=bec453e4-98db-11ec-b273-ca2e1a8950b9&amp;resourceName=%2Fapplication%2FBOOT-INF%2Fclasses%2Fbpmn%2FprototypeUnpickingTask.bpmn&amp;deploymentsQuery=%5B%7B%22type%22%3A%22id%22%2C%22operator%22%3A%22eq%22%2C%22value%22%3A%22bec453e4-98db-11ec-b273-ca2e1a8950b9%22%7D%5D">bec453e4-98db-11ec-b273-ca2e1a8950b9</a>
+    </dd>
+
+    <dt class="ng-binding">Instances Running:</dt>
+    <dd class="running-instances">
+        <!-- ngIf: !instanceStatistics.$loaded -->
+        <!-- ngIf: instanceStatistics.$loaded -->
+        <ul ng-if="instanceStatistics.$loaded" class="ng-scope">
+            <li class="ng-binding">
+                current version:
+                <strong class="current-version ng-binding">184</strong>
+                <!-- ngIf: hasMigrationPlugin && !isLatestVersion() && instanceStatistics.current.count > 0 -->
+            </li>
+            <li class="ng-binding">
+                all versions:
+                <strong class="all-versions ng-binding">185</strong>
+                <!-- ngIf: hasMigrationPlugin && isLatestVersion() && instanceStatistics.all.count !== instanceStatistics.current.count -->
+            </li>
+        </ul><!-- end ngIf: instanceStatistics.$loaded -->
+    </dd>
+
+    <!-- ngIf: hasMigrationPlugin || hasReportPlugin -->
+    <!-- ngIf: hasMigrationPlugin || hasReportPlugin -->
+</dl>
+<div id="app"></div>
+<script src="index.ts"></script>
+</body>
+</html>
